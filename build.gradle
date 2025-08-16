@@ -45,7 +45,7 @@ tasks.withType(Test).configureEach {
     systemProperties(System.getProperties())
     testLogging {
         lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
+            events "started", "passed", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
     }
