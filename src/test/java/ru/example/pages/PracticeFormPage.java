@@ -25,6 +25,7 @@ public class PracticeFormPage {
     private final SelenideElement mobileInput = $("#userNumber");
     private final SelenideElement dateOfBirthInput = $("#dateOfBirthInput");
     private final SelenideElement subjectsInput = $("#subjectsInput");
+    private final SelenideElement subjectsAutocompleteMenu = $(".subjects-auto-complete__menu");
     private final SelenideElement hobbiesWrapper = $("#hobbiesWrapper");
     private final SelenideElement uploadPictureInput = $("#uploadPicture");
     private final SelenideElement currentAddressInput = $("#currentAddress");
@@ -92,7 +93,11 @@ public class PracticeFormPage {
     @Step("Выбираем в поле 'Subjects' значения: {subjects}")
     public PracticeFormPage selectSubjects(String... subjects) {
         for (String subject : subjects) {
-            subjectsInput.setValue(subject).pressEnter();
+            // For some reason, this doesn't work in Firefox - triggers form submission.
+            // Pressing TAB doesn't work either - the subjects field stays empty.
+            // subjectsInput.setValue(subject).pressEnter();
+            subjectsInput.setValue(subject);
+            subjectsAutocompleteMenu.$(byText(subject)).click();
         }
         return this;
     }
