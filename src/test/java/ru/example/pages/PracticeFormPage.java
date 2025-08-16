@@ -97,7 +97,9 @@ public class PracticeFormPage {
             // Pressing TAB doesn't work either - the subjects field stays empty.
             // subjectsInput.setValue(subject).pressEnter();
             subjectsInput.setValue(subject);
-            subjectsAutocompleteMenu.$(byText(subject)).click();
+            subjectsAutocompleteMenu.$(byText(subject))
+                    .scrollIntoView("{behavior: 'instant', block: 'center'}")
+                    .click();
         }
         return this;
     }
